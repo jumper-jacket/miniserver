@@ -1,9 +1,16 @@
 {
   "devDependencies": {
+    "@types/express": "^4.17.21",
+    "@types/node": "^22.5.1",
     "tailwindcss": "^3.4.10",
     "typescript": "^5.5.4"
   },
   "scripts": {
-    "taillwind_c": "npx tailwindcss -i ./src/input.css -o ./dist/output.css --watch"
+    "taillwind_c": "npx tailwindcss -i ./src/input.css -o ./public/output.css --watch",
+    "server": "npx tsc && node dist/server.js"
+  },
+  "dependencies": {
+    "express": "^4.19.2",
+    "types": "file:../../../../../../express"
   }
 }
