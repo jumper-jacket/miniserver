@@ -6,7 +6,7 @@
     "typescript": "^5.5.4"
   },
   "scripts": {
-    "taillwind_c": "npx tailwindcss -i ./src/input.css -o ./public/output.css --watch",
+    "tailwind_c": "npx tailwindcss -i ./src/input.css -o ./public/output.css --watch",
     "server": "npx tsc && node dist/server.js"
   },
   "dependencies": {
