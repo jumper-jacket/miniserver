@@ -8,8 +8,14 @@ const path_1 = __importDefault(require("path"));
 const app = (0, express_1.default)();
 const port = 3000;
 app.use(express_1.default.static(path_1.default.join(__dirname, '../public')));
+app.use(express_1.default.json());
 app.get('/', (req, res) => {
     res.sendFile(path_1.default.join(__dirname, '../public/index.html'));
+});
+app.post('/api/message', (req, res) => {
+    const { testMessage } = req.body;
+    const reply = `server ${testMessage}`;
+    res.json({ reply });
 });
 app.listen(port, () => {
     console.log(`sever is running at http://localhost:${port}`);

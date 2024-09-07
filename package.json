@@ -7,7 +7,10 @@
   },
   "scripts": {
     "tailwind_c": "npx tailwindcss -i ./src/input.css -o ./public/output.css --watch",
-    "server": "npx tsc && node dist/server.js"
+    "build:server": "tsc -p tsconfig.server.json",
+    "build:client": "tsc -p tsconfig.client.json",
+    "build": "npm run build:server && npm run build:client",
+    "start": "node dist/server.js"
   },
   "dependencies": {
     "express": "^4.19.2",
