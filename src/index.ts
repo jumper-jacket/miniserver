@@ -1,21 +1,23 @@
-const sendBtn = document.querySelector('#btn') as HTMLElement;
+const sendBtn = document.querySelector('#testBtn') as HTMLElement;
+const timeBtn = document.querySelector('#timeBtn') as HTMLElement;
 const testDiv = document.querySelector('#elm') as HTMLElement;
 
-sendBtn?.addEventListener('click', async () => {
-    console.log("click!!");
+async function sendRequest(endpoint: string, data: object = {}) {
     try {
-        const testMessage = 'API TEST';
-        const response = await fetch('/api/message', {
+        const response = await fetch(`/api/${endpoint}`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
             },
-            body: JSON.stringify({ testMessage })
+            body: JSON.stringify(data)
         });
-        const data = await response.json();
-        testDiv.textContent = data.reply;
+        const result = await response.json();
+        testDiv.textContent = result.reply;
     } catch (error) {
         console.error('Error: ', error);
         testDiv.textContent = "エラーが発生しました。";
     }
-});
+}
+
+sendBtn?.addEventListener('click', () => sendRequest('message', { testMessage: 'API TEST' }));
+timeBtn?.addEventListener('click', () => sendRequest('time'));

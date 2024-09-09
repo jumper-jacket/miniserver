@@ -10,11 +10,14 @@
 <body class="h-screen flex flex-col">
     <h1 class="font-bold bg-black text-white p-2 text-center text-3xl">Webサーバー!</h1>
     <h2 class="bg-slate-600 text-white font-semibold  text-center p-3">express</h2>
-    <div id="elm"></div>
-    <div class="flex-grow flex justify-center items-center">
-        <button id="btn" class="bg-green-700 font-medium text-white p-2 ">
+    <div id="elm" class="bg-green-400 font-bold">レスポンスを表示するところ</div>
+    <div class="flex-grow flex flex-col justify-center items-center">
+        <button id="testBtn" class="bg-green-700 font-medium text-white p-2 ">
         サーバーにhttpリクエストを送信
-    </button>
+        </button>
+        <button id="timeBtn" class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded mr-2">
+            現在時刻取得
+        </button>
     </div>
 
 </body>

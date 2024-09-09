@@ -8,24 +8,27 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
-const sendBtn = document.querySelector('#btn');
+const sendBtn = document.querySelector('#testBtn');
+const timeBtn = document.querySelector('#timeBtn');
 const testDiv = document.querySelector('#elm');
-sendBtn === null || sendBtn === void 0 ? void 0 : sendBtn.addEventListener('click', () => __awaiter(void 0, void 0, void 0, function* () {
-    console.log("click!!");
-    try {
-        const testMessage = 'API TEST';
-        const response = yield fetch('/api/message', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({ testMessage })
-        });
-        const data = yield response.json();
-        testDiv.textContent = data.reply;
-    }
-    catch (error) {
-        console.error('Error: ', error);
-        testDiv.textContent = "エラーが発生しました。";
-    }
-}));
+function sendRequest(endpoint_1) {
+    return __awaiter(this, arguments, void 0, function* (endpoint, data = {}) {
+        try {
+            const response = yield fetch(`/api/${endpoint}`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(data)
+            });
+            const result = yield response.json();
+            testDiv.textContent = result.reply;
+        }
+        catch (error) {
+            console.error('Error: ', error);
+            testDiv.textContent = "エラーが発生しました。";
+        }
+    });
+}
+sendBtn === null || sendBtn === void 0 ? void 0 : sendBtn.addEventListener('click', () => sendRequest('message', { testMessage: 'API TEST' }));
+timeBtn === null || timeBtn === void 0 ? void 0 : timeBtn.addEventListener('click', () => sendRequest('time'));

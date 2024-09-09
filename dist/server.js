@@ -17,6 +17,10 @@ app.post('/api/message', (req, res) => {
     const reply = `server ${testMessage}`;
     res.json({ reply });
 });
+app.post('/api/time', (req, res) => {
+    const currentTime = new Date().toLocaleString();
+    res.json({ reply: `現在の時刻: ${currentTime}` });
+});
 app.listen(port, () => {
     console.log(`sever is running at http://localhost:${port}`);
 });
